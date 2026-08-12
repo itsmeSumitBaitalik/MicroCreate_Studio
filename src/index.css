@@ -1,0 +1,92 @@
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #F4EFE7;
+  color: #1A1613;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background-color: #B8873F;
+  color: #F4EFE7;
+}
+/* --- Plaster surfaces -------------------------------------------------- */
+/* Each section sits on a real texture photograph, tinted back so type stays
+   readable. Children must carry `relative z-10`. */
+
+.surface {
+  position: relative;
+}
+.surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+}
+.surface-limewash::before {
+  background-image: url('https://cdn.magicpatterns.com/patterns/generated-images/eadc15e6-9082-41a2-a5ba-afd088866219.jpg');
+  opacity: 0.28;
+}
+.surface-travertine::before {
+  background-image: url('https://cdn.magicpatterns.com/patterns/generated-images/0a5a5bd6-c7ad-461d-84a2-c8c0bc66d5e8.jpg');
+  opacity: 0.24;
+}
+.surface-marmorino::before {
+  background-image: url('https://cdn.magicpatterns.com/patterns/generated-images/1997d847-c509-4643-9c8a-2b0f75f3bf1f.jpg');
+  opacity: 0.2;
+}
+.surface-ombre::before {
+  background-image: url('https://cdn.magicpatterns.com/patterns/generated-images/7962703b-707e-4e2c-8988-2f20dff1b2db.jpg');
+  opacity: 0.22;
+}
+.surface-mandana::before {
+  background-image: url('https://cdn.magicpatterns.com/patterns/generated-images/8fc15c66-c034-4708-9192-a1028236fcd3.jpg');
+  opacity: 0.3;
+  mix-blend-mode: screen;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
