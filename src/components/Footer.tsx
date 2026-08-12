@@ -85,11 +85,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="relative mt-4 select-none" aria-hidden="true">
-          <p className="whitespace-nowrap text-center font-wordmark text-[19.5vw] leading-[0.76] tracking-[0.005em] text-cream/95">
+        <div className="relative mt-6 select-none overflow-hidden px-4" aria-hidden="true">
+          <p className="whitespace-nowrap text-center font-wordmark text-[12vw] leading-[0.85] tracking-[0.02em] text-cream/95 sm:text-[12.5vw] lg:text-[13vw]">
             MICROCRETE
           </p>
-          <p className="-mt-[1.4vw] pb-[1.2vw] text-center font-display text-[3.6vw] italic leading-none text-gold">
+          <p className="-mt-[0.8vw] pb-[1.5vw] text-center font-display text-[2.8vw] italic leading-none text-gold sm:text-[3vw]">
             texture &amp; paints
           </p>
         </div>
