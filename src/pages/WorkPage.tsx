@@ -7,7 +7,7 @@ import { Process } from '../components/Process';
 import { ContactCta } from '../components/ContactCta';
 import { projects } from '../data/projects';
 
-const WORK_HERO = "/1321823a-7a7b-4317-95ea-ce7b65a6583c.jpg";
+const WORK_HERO = "/1321823a-7a7b-4317-95ea-ce7b65a6583c.webp";
 
 
 export function WorkPage() {

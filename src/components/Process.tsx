@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const PROCESS_IMAGE = "/55447d57-6b6f-42c5-b121-ff316cca753b.jpg";
+const PROCESS_IMAGE = "/55447d57-6b6f-42c5-b121-ff316cca753b.webp";
 
 
 const steps = [

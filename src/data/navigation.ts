@@ -11,4 +11,4 @@ export const navLinks: NavLink[] = [
 { label: 'Contact Us', to: '/contact' }];
 
 
-export const LOGO_SRC = "/Company_logo.png";
+export const LOGO_SRC = "/Company_logo.webp";

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, ArrowUpRightIcon } from 'lucide-react';
 
-const HERO_IMAGE = "/0d478af7-c767-4f97-8030-2d6197cd7d84.jpg";
+const HERO_IMAGE = "/0d478af7-c767-4f97-8030-2d6197cd7d84.webp";
 
 
 export function Hero() {

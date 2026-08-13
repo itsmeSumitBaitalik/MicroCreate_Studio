@@ -6,7 +6,7 @@ import { Team } from '../components/Team';
 import { Process } from '../components/Process';
 import { ContactCta } from '../components/ContactCta';
 
-const ABOUT_HERO = "/9299936d-b0a7-46f4-94e6-52c681be2d56.jpg";
+const ABOUT_HERO = "/9299936d-b0a7-46f4-94e6-52c681be2d56.webp";
 
 
 const milestones = [
@@ -14,21 +14,21 @@ const milestones = [
   value: '+450',
   label: 'Surfaces finished',
   text: 'Homes, cafés, retail and hospitality interiors delivered end to end.',
-  image: "/eadc15e6-9082-41a2-a5ba-afd088866219.jpg"
+  image: "/eadc15e6-9082-41a2-a5ba-afd088866219.webp"
 
 },
 {
   value: '18',
   label: 'Cities covered',
   text: 'A travelling crew that carries its own mixers, tools and sample kit.',
-  image: "/0a5a5bd6-c7ad-461d-84a2-c8c0bc66d5e8.jpg"
+  image: "/0a5a5bd6-c7ad-461d-84a2-c8c0bc66d5e8.webp"
 
 },
 {
   value: '10 yrs',
   label: 'Written warranty',
   text: 'Cracking, delamination and seal performance — covered in writing.',
-  image: "/1997d847-c509-4643-9c8a-2b0f75f3bf1f.jpg"
+  image: "/1997d847-c509-4643-9c8a-2b0f75f3bf1f.webp"
 
 }];
 

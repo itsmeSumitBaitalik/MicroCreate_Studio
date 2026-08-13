@@ -5,7 +5,7 @@ import { WhyUs } from '../components/WhyUs';
 import { Faq } from '../components/Faq';
 import { ContactCta } from '../components/ContactCta';
 
-const SERVICES_HERO = "/47522b40-9ed1-4028-8145-c761bc015399.jpg";
+const SERVICES_HERO = "/47522b40-9ed1-4028-8145-c761bc015399.webp";
 
 
 export function ServicesPage() {

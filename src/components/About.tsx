@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { LeafIcon, HammerIcon, ShieldCheckIcon } from 'lucide-react';
 
-const SHOWCASE = "/f6b54c8c-2a94-4af1-a3d1-bd14492b1aff.jpg";
+const SHOWCASE = "/f6b54c8c-2a94-4af1-a3d1-bd14492b1aff.webp";
 
 
 const pillars = [

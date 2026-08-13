@@ -12,22 +12,22 @@ import {
   LinkedinIcon } from
 'lucide-react';
 import { textures } from '../data/textures';
-import { useScreenInit } from '../useScreenInit.js';
+import { useScreenInit } from '../useScreenInit';
 
 const MAP_SRC =
 'https://www.openstreetmap.org/export/embed.html?bbox=80.2050%2C12.9650%2C80.2450%2C12.9950&layer=mapnik&marker=12.98%2C80.225';
 
 const studioPhotos = [
 {
-  src: "/1636ca06-e092-4e03-8d97-c6bda6699f62.jpg",
+  src: "/1636ca06-e092-4e03-8d97-c6bda6699f62.webp",
   alt: 'Studio street frontage with a sand-toned rendered facade'
 },
 {
-  src: "/47522b40-9ed1-4028-8145-c761bc015399.jpg",
+  src: "/47522b40-9ed1-4028-8145-c761bc015399.webp",
   alt: 'Showroom wall of graded plaster sample tiles above a consultation table'
 },
 {
-  src: "/1eebc37f-8363-43e6-b601-32ca527e48e1.jpg",
+  src: "/1eebc37f-8363-43e6-b601-32ca527e48e1.webp",
   alt: 'Shelf of hand-made plaster sample boards in earth tones'
 }];
 
