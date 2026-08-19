@@ -34,11 +34,11 @@ export function ContactCta() {
               <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <a
-              href="tel:+910123456789"
+              href="tel:+918690670529"
               className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-7 py-4 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-cream">
               
               <PhoneIcon className="h-4 w-4" strokeWidth={1.5} />
-              +91 01234 56789
+              +91 86906 70529
             </a>
           </div>
 

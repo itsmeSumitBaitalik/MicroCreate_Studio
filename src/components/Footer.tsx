@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, ArrowUpRightIcon } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon, ArrowUpRightIcon } from 'lucide-react';
 import { navLinks } from '../data/navigation';
 
 const socials = [
 { label: 'Instagram', icon: InstagramIcon, href: 'https://www.instagram.com/microcrete_studio' },
 { label: 'Facebook', icon: FacebookIcon, href: '#' },
-{ label: 'LinkedIn', icon: LinkedinIcon, href: '#' },
-{ label: 'YouTube', icon: YoutubeIcon, href: '#' }];
+{ label: 'LinkedIn', icon: LinkedinIcon, href: '#' }];
 
 
 export function Footer() {
@@ -36,7 +35,7 @@ export function Footer() {
               <p className="text-[10px] uppercase tracking-[0.35em] text-cream/40">Follow Us</p>
               <div className="mt-5 space-y-1.5 text-sm text-cream/75">
                 <p>sahani.parimal@gmail.com</p>
-                <p>+91 01234 56789</p>
+                <p>+91 86906 70529</p>
               </div>
               <ul className="mt-6 flex gap-3 md:justify-center">
                 {socials.map((social) =>

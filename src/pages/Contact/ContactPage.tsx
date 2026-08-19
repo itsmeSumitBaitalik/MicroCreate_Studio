@@ -81,11 +81,11 @@ export function ContactPage() {
                 <li className="border-t border-ink/15 pt-6">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Phone</p>
                   <a
-                    href="tel:+910123456789"
+                    href="tel:+918690670529"
                     className="group mt-2 inline-flex items-center gap-2 font-display text-2xl text-ink transition-colors hover:text-gold">
 
                     <PhoneIcon className="h-4 w-4" strokeWidth={1.5} />
-                    +91 01234 56789
+                    +91 86906 70529
                   </a>
                 </li>
 
