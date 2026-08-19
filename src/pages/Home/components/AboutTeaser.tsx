@@ -5,7 +5,6 @@ import { ArrowRightIcon } from 'lucide-react';
 
 const SHOWCASE = "/f6b54c8c-2a94-4af1-a3d1-bd14492b1aff.webp";
 
-
 export function AboutTeaser() {
   return (
     <section className="surface surface-marmorino w-full bg-cream px-4 py-20 sm:px-6 sm:py-28">

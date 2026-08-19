@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
-import { projects } from '../data/projects';
+import { projects } from '../../../data/projects';
 
 const OFFSETS = [-2, -1, 0, 1, 2];
 
@@ -20,8 +20,6 @@ export function WorkCarousel() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // Steps the deck by any number of cards, so clicking the second card to the
-  // right scrolls two positions rather than one.
   const go = (steps: number) => {
     if (!steps) return;
     setIndex((i) => (i + steps % total + total) % total);

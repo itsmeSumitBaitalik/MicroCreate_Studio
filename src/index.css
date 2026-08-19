@@ -92,3 +92,49 @@ body {
   opacity: 0.35;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
+
+/* --- Video marquee (infinite auto-scroll) ------------------------------- */
+.video-card {
+  width: 11rem;
+}
+@media (min-width: 640px) {
+  .video-card {
+    width: 13rem;
+  }
+}
+@media (min-width: 768px) {
+  .video-card {
+    width: 16rem;
+  }
+}
+
+@keyframes video-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.video-marquee-track {
+  animation: video-marquee 25s linear infinite;
+  will-change: transform;
+}
+@media (min-width: 640px) {
+  .video-marquee-track {
+    animation-duration: 32s;
+  }
+}
+@media (min-width: 768px) {
+  .video-marquee-track {
+    animation-duration: 40s;
+  }
+}
+.video-marquee:hover .video-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-marquee-track {
+    animation: none;
+  }
+}

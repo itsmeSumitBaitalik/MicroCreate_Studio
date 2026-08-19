@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 const PROCESS_IMAGE = "/55447d57-6b6f-42c5-b121-ff316cca753b.webp";
 
-
 const steps = [
 {
   no: '01',
@@ -25,7 +24,6 @@ const steps = [
   title: 'Seal & handover',
   text: 'Breathable or waterproof sealing to suit the room, plus a written care and warranty sheet.'
 }];
-
 
 export function Process() {
   return (

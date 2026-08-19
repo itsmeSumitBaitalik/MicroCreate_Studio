@@ -1,9 +1,10 @@
 import React from 'react';
-import { PageHero } from '../components/PageHero';
-import { Services } from '../components/Services';
-import { WhyUs } from '../components/WhyUs';
-import { Faq } from '../components/Faq';
-import { ContactCta } from '../components/ContactCta';
+import { PageHero } from '../../components/PageHero';
+import { Services } from './components/Services';
+import { WhyUs } from '../Home/components/WhyUs';
+import { Faq } from './components/Faq';
+import { WorkShowcase } from './components/WorkShowcase';
+import { ContactCta } from '../Contact/components/ContactCta';
 
 const SERVICES_HERO = "/47522b40-9ed1-4028-8145-c761bc015399.webp";
 
@@ -23,10 +24,11 @@ export function ServicesPage() {
           label: 'Custom shades',
           text: 'Tinted to your sample, your light and your brief — not a fixed swatch book.'
         }} />
-      
+
       <Services />
       <WhyUs />
       <Faq />
+      <WorkShowcase />
       <ContactCta />
     </>);
 

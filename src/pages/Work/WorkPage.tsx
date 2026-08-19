@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRightIcon } from 'lucide-react';
-import { PageHero } from '../components/PageHero';
-import { WorkCarousel } from '../components/WorkCarousel';
-import { Process } from '../components/Process';
-import { ContactCta } from '../components/ContactCta';
-import { projects } from '../data/projects';
+import { PageHero } from '../../components/PageHero';
+import { WorkCarousel } from './components/WorkCarousel';
+import { Process } from '../About/components/Process';
+import { ContactCta } from '../Contact/components/ContactCta';
+import { projects } from '../../data/projects';
 
 const WORK_HERO = "/1321823a-7a7b-4317-95ea-ce7b65a6583c.webp";
 
@@ -25,7 +25,7 @@ export function WorkPage() {
           label: 'Surfaces delivered',
           text: 'From a single accent wall to 6,000 sq ft of seamless flooring.'
         }} />
-      
+
 
       <WorkCarousel />
 
@@ -43,19 +43,19 @@ export function WorkPage() {
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, i) =>
-            <motion.article
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i % 3 * 0.08 }}
-              className="group relative overflow-hidden rounded-[1.75rem]">
-              
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i % 3 * 0.08 }}
+                className="group relative overflow-hidden rounded-[1.75rem]">
+
                 <img
-                src={project.image}
-                alt={`${project.title} — ${project.finish} in ${project.location}`}
-                className="h-80 w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
-              
+                  src={project.image}
+                  alt={`${project.title} — ${project.finish} in ${project.location}`}
+                  className="h-80 w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-6">
                   <div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
-import { projects } from '../data/projects';
+import { projects } from '../../../data/projects';
 
 export function WorkTeaser() {
   const featured = projects.slice(0, 4);

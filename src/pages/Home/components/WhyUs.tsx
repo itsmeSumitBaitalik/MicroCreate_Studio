@@ -28,7 +28,6 @@ const highlights = [
 { icon: TruckIcon, line1: 'No Demolition', line2: 'Over Old Tile' },
 { icon: HeartHandshakeIcon, line1: '450+ Surfaces', line2: 'Delivered' }];
 
-
 export function WhyUs() {
   return (
     <section

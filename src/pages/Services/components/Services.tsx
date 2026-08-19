@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRightIcon } from 'lucide-react';
-import { textures } from '../data/textures';
+import { textures } from '../../../data/textures';
 
 type Filter = 'All' | 'Wall' | 'Floor';
 const filters: Filter[] = ['All', 'Wall', 'Floor'];

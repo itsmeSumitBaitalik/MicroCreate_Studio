@@ -4,7 +4,7 @@ import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, ArrowUpRightIco
 import { navLinks } from '../data/navigation';
 
 const socials = [
-{ label: 'Instagram', icon: InstagramIcon, href: '#' },
+{ label: 'Instagram', icon: InstagramIcon, href: 'https://www.instagram.com/microcrete_studio' },
 { label: 'Facebook', icon: FacebookIcon, href: '#' },
 { label: 'LinkedIn', icon: LinkedinIcon, href: '#' },
 { label: 'YouTube', icon: YoutubeIcon, href: '#' }];
@@ -35,7 +35,7 @@ export function Footer() {
             <div className="md:text-center">
               <p className="text-[10px] uppercase tracking-[0.35em] text-cream/40">Follow Us</p>
               <div className="mt-5 space-y-1.5 text-sm text-cream/75">
-                <p>hello@microcretestudio.com</p>
+                <p>sahani.parimal@gmail.com</p>
                 <p>+91 01234 56789</p>
               </div>
               <ul className="mt-6 flex gap-3 md:justify-center">
@@ -56,11 +56,9 @@ export function Footer() {
             <div className="md:text-right">
               <p className="text-[10px] uppercase tracking-[0.35em] text-cream/40">Studio</p>
               <address className="mt-5 text-sm not-italic leading-relaxed text-cream/75">
-                #21, North Street,
+                141 Palanpur Jakatnaka,
                 <br />
-                Velachery,
-                <br />
-                Chennai — 600042
+                Adajan, Surat - 395009
               </address>
               <Link
                 to="/contact"

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { textures } from '../data/textures';
+import { textures } from '../../../data/textures';
 
 export function ServicesTeaser() {
   const trackRef = useRef<HTMLUListElement>(null);

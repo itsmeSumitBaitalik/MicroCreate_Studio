@@ -9,27 +9,28 @@ import {
   PhoneIcon,
   InstagramIcon,
   FacebookIcon,
-  LinkedinIcon } from
-'lucide-react';
-import { textures } from '../data/textures';
-import { useScreenInit } from '../useScreenInit';
+  LinkedinIcon
+} from
+  'lucide-react';
+import { textures } from '../../data/textures';
+import { useScreenInit } from '../../useScreenInit';
 
 const MAP_SRC =
-'https://www.openstreetmap.org/export/embed.html?bbox=80.2050%2C12.9650%2C80.2450%2C12.9950&layer=mapnik&marker=12.98%2C80.225';
+  'https://www.openstreetmap.org/export/embed.html?bbox=72.7650%2C21.1750%2C72.8150%2C21.2150&layer=mapnik&marker=21.1950%2C72.7900';
 
 const studioPhotos = [
-{
-  src: "/1636ca06-e092-4e03-8d97-c6bda6699f62.webp",
-  alt: 'Studio street frontage with a sand-toned rendered facade'
-},
-{
-  src: "/47522b40-9ed1-4028-8145-c761bc015399.webp",
-  alt: 'Showroom wall of graded plaster sample tiles above a consultation table'
-},
-{
-  src: "/1eebc37f-8363-43e6-b601-32ca527e48e1.webp",
-  alt: 'Shelf of hand-made plaster sample boards in earth tones'
-}];
+  {
+    src: "/1636ca06-e092-4e03-8d97-c6bda6699f62.webp",
+    alt: 'Studio street frontage with a sand-toned rendered facade'
+  },
+  {
+    src: "/47522b40-9ed1-4028-8145-c761bc015399.webp",
+    alt: 'Showroom wall of graded plaster sample tiles above a consultation table'
+  },
+  {
+    src: "/1eebc37f-8363-43e6-b601-32ca527e48e1.webp",
+    alt: 'Shelf of hand-made plaster sample boards in earth tones'
+  }];
 
 
 export function ContactPage() {
@@ -44,7 +45,7 @@ export function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-            
+
             <p className="text-[11px] uppercase tracking-[0.35em] text-gold">*Contact Us</p>
             <h1 className="mt-5 font-display text-[17vw] uppercase leading-[0.85] tracking-tight text-ink sm:text-[8rem] lg:text-[10rem]">
               Contact
@@ -55,7 +56,7 @@ export function ContactPage() {
           <div className="mt-12 grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <p className="max-w-sm text-sm leading-relaxed text-ink/70">
-                Microcrete Studio is based in Velachery, Chennai and travels across India. Reach us
+                Microcrete Studio is based in Adajan, Surat, Gujarat and travels across India. Reach us
                 by email, phone, or simply walk in with a photo of your wall.
               </p>
 
@@ -63,12 +64,12 @@ export function ContactPage() {
                 <li className="border-t border-ink/15 pt-6">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Studio</p>
                   <a
-                    href="https://maps.google.com/?q=Velachery+Chennai"
+                    href="https://maps.google.com/?q=141+Palanpur+Jakatnaka,+Adajan,+Surat+395009"
                     target="_blank"
                     rel="noreferrer"
                     className="group mt-2 flex items-start gap-2 font-display text-2xl leading-tight text-ink transition-colors hover:text-gold">
-                    
-                    #21, North Street, Velachery, Chennai — 600042
+
+                    141 Palanpur Jakatnaka, Adajan, Surat - 395009
                     <ArrowUpRightIcon className="mt-2 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </a>
                   <p className="mt-2 inline-flex items-center gap-2 text-xs text-ink/55">
@@ -82,7 +83,7 @@ export function ContactPage() {
                   <a
                     href="tel:+910123456789"
                     className="group mt-2 inline-flex items-center gap-2 font-display text-2xl text-ink transition-colors hover:text-gold">
-                    
+
                     <PhoneIcon className="h-4 w-4" strokeWidth={1.5} />
                     +91 01234 56789
                   </a>
@@ -91,31 +92,31 @@ export function ContactPage() {
                 <li className="border-t border-ink/15 pt-6">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Email</p>
                   <a
-                    href="mailto:hello@microcretestudio.com"
+                    href="mailto:sahani.parimal@gmail.com"
                     className="group mt-2 inline-flex items-center gap-2 font-display text-2xl text-ink transition-colors hover:text-gold">
-                    
+
                     <MailIcon className="h-4 w-4" strokeWidth={1.5} />
-                    hello@microcretestudio.com
+                    sahani.parimal@gmail.com
                   </a>
                 </li>
               </ul>
 
               <ul className="mt-10 flex gap-3">
                 {[
-                { label: 'Instagram', icon: InstagramIcon },
-                { label: 'Facebook', icon: FacebookIcon },
-                { label: 'LinkedIn', icon: LinkedinIcon }].
-                map((social) =>
-                <li key={social.label}>
-                    <a
-                    href="#"
-                    aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 text-ink transition-colors hover:border-gold hover:bg-gold hover:text-cream">
-                    
-                      <social.icon className="h-4 w-4" strokeWidth={1.5} />
-                    </a>
-                  </li>
-                )}
+                  { label: 'Instagram', icon: InstagramIcon },
+                  { label: 'Facebook', icon: FacebookIcon },
+                  { label: 'LinkedIn', icon: LinkedinIcon }].
+                  map((social) =>
+                    <li key={social.label}>
+                      <a
+                        href={social.label === 'Instagram' ? 'https://www.instagram.com/microcrete_studio' : '#'}
+                        aria-label={social.label}
+                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 text-ink transition-colors hover:border-gold hover:bg-gold hover:text-cream">
+
+                        <social.icon className="h-4 w-4" strokeWidth={1.5} />
+                      </a>
+                    </li>
+                  )}
               </ul>
             </div>
 
@@ -125,9 +126,9 @@ export function ContactPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6 }}
               className="rounded-[2rem] border border-ink/10 bg-sand p-6 sm:p-10">
-              
+
               {sent ?
-              <div className="flex h-full min-h-[380px] flex-col items-center justify-center text-center">
+                <div className="flex h-full min-h-[380px] flex-col items-center justify-center text-center">
                   <CheckCircle2Icon className="h-10 w-10 text-gold" strokeWidth={1.25} />
                   <h2 className="mt-5 font-display text-3xl text-ink">Request received</h2>
                   <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink/60">
@@ -136,13 +137,13 @@ export function ContactPage() {
                   </p>
                 </div> :
 
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="space-y-6">
-                
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSent(true);
+                  }}
+                  className="space-y-6">
+
                   <p className="font-display text-2xl text-ink">
                     Tell us about the surface, we&apos;ll quote it.
                   </p>
@@ -158,14 +159,14 @@ export function ContactPage() {
                       Finish of interest
                     </span>
                     <select
-                    name="finish"
-                    className="mt-2 w-full border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors focus:border-gold">
-                    
+                      name="finish"
+                      className="mt-2 w-full border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors focus:border-gold">
+
                       {textures.map((t) =>
-                    <option key={t.id} value={t.name}>
+                        <option key={t.id} value={t.name}>
                           {t.name}
                         </option>
-                    )}
+                      )}
                       <option value="not-sure">Not sure yet</option>
                     </select>
                   </label>
@@ -175,17 +176,17 @@ export function ContactPage() {
                       Describe your project
                     </span>
                     <textarea
-                    name="message"
-                    rows={3}
-                    placeholder="Room, approximate area, timeline…"
-                    className="mt-2 w-full resize-none border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold" />
-                  
+                      name="message"
+                      rows={3}
+                      placeholder="Room, approximate area, timeline…"
+                      className="mt-2 w-full resize-none border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold" />
+
                   </label>
 
                   <button
-                  type="submit"
-                  className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-cream transition-colors hover:bg-gold">
-                  
+                    type="submit"
+                    className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-cream transition-colors hover:bg-gold">
+
                     Request a quote
                     <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </button>
@@ -204,37 +205,37 @@ export function ContactPage() {
 
           <div className="mt-10 overflow-hidden rounded-[2rem] border border-ink/10">
             <iframe
-              title="Map showing Microcrete Studio in Velachery, Chennai"
+              title="Map showing Adajan area, Surat, Gujarat"
               src={MAP_SRC}
               className="h-[320px] w-full sm:h-[420px]"
               loading="lazy" />
-            
+
           </div>
 
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
-              href="https://maps.google.com/?q=Velachery+Chennai"
+              href="https://maps.google.com/?q=141+Palanpur+Jakatnaka,+Adajan,+Surat+395009"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-gold">
-              
+
               <MapPinIcon className="h-4 w-4" strokeWidth={1.5} />
               Open in Google Maps
             </a>
-            <p className="text-xs text-ink/55">Free visitor parking on North Street.</p>
+            <p className="text-xs text-ink/55">Free visitor parking available on-site.</p>
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {studioPhotos.map((photo, i) =>
-            <motion.img
-              key={photo.src}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              src={photo.src}
-              alt={photo.alt}
-              className="h-56 w-full rounded-2xl object-cover" />
+              <motion.img
+                key={photo.src}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                src={photo.src}
+                alt={photo.alt}
+                className="h-56 w-full rounded-2xl object-cover" />
 
             )}
           </div>
@@ -261,7 +262,7 @@ function Field({ label, name, type = 'text', placeholder }: FieldProps) {
         required
         placeholder={placeholder}
         className="mt-2 w-full border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold" />
-      
+
     </label>);
 
 }

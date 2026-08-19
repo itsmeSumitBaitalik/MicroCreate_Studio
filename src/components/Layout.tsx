@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { LoadingSpinner } from './LoadingSpinner';
+import { Suspense } from 'react';
 
 export function Layout() {
   const { pathname } = useLocation();
@@ -14,7 +16,9 @@ export function Layout() {
     <div className="min-h-screen w-full bg-cream font-sans">
       <Navbar />
       <main>
-        <Outlet />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>);

@@ -20,10 +20,9 @@ const faqs = [
   a: 'A damp cloth and pH-neutral soap is all it needs. Wet-area surfaces are sealed with a water-based polyurethane; we recommend a re-seal on floors every five to seven years.'
 },
 {
-  q: 'Do you work outside Chennai?',
+  q: 'Do you work outside Surat?',
   a: 'Yes — we execute projects across eighteen cities. The crew travels with its own mixers, tools and sample kit, and travel is quoted transparently as a line item.'
 }];
-
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
-import { team } from '../data/team';
+import { team } from '../../../data/team';
 
 export function Team() {
   return (

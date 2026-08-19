@@ -4,7 +4,6 @@ import { LeafIcon, HammerIcon, ShieldCheckIcon } from 'lucide-react';
 
 const SHOWCASE = "/f6b54c8c-2a94-4af1-a3d1-bd14492b1aff.webp";
 
-
 const pillars = [
 {
   icon: LeafIcon,
@@ -21,7 +20,6 @@ const pillars = [
   title: 'Sealed to last',
   text: 'Wet-area and high-traffic systems finished with a 10-year performance seal.'
 }];
-
 
 export function About() {
   return (
