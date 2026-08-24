@@ -92,11 +92,11 @@ export function ContactPage() {
                 <li className="border-t border-ink/15 pt-6">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Email</p>
                   <a
-                    href="mailto:sahani.parimal@gmail.com"
+                    href="mailto:microcretestudio@gmail.com"
                     className="group mt-2 inline-flex items-center gap-2 font-display text-2xl text-ink transition-colors hover:text-gold">
 
                     <MailIcon className="h-4 w-4" strokeWidth={1.5} />
-                    sahani.parimal@gmail.com
+                    microcretestudio@gmail.com
                   </a>
                 </li>
               </ul>

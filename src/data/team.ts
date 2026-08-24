@@ -4,28 +4,34 @@ export type Member = {
   role: string;
   note: string;
   image: string;
+  objectPosition?: string;
+  featured?: boolean;
 };
 
 export const team: Member[] = [
   {
-    id: "rajesh",
-    name: "Rajesh Kumar",
-    role: "Master Applicator",
-    note: "22 years on the trowel. Leads every marmorino and travertine burnish.",
+    id: "parimal",
+    name: "Parimal R. Sahani",
+    role: "Founder & Owner",
+    note: "Founded Microcrete Studio with a vision to bring premium seamless wall and floor finishes to modern interiors.",
     image: "/profile_1.webp",
+    objectPosition: "top center",
+    featured: true,
   },
   {
-    id: "meera",
-    name: "Meera Iyer",
-    role: "Colour & Texture Design",
-    note: "Mixes every custom shade and builds the sample boards you approve.",
+    id: "kabita",
+    name: "Mrs. Kabita Prasad",
+    role: "Client Relations & Showroom Manager",
+    note: "Manages enquiries, client communication and showroom interactions — ensuring every client feels welcome.",
     image: "/profile_2.webp",
+    objectPosition: "top center",
   },
   {
-    id: "arun",
-    name: "Arun Prakash",
-    role: "Site Supervisor",
-    note: "Runs prep, scheduling and the final quality walk on every project.",
+    id: "mahesh",
+    name: "Mr. Mahesh Sahani",
+    role: "Quality & Project Coordination",
+    note: "Oversees material quality, preparation standards and quality checks to ensure every project meets the studio's finish standards.",
     image: "/profile_3.webp",
+    objectPosition: "top center",
   },
 ];
