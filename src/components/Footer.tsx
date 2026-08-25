@@ -34,8 +34,16 @@ export function Footer() {
             <div className="md:text-center">
               <p className="text-[10px] uppercase tracking-[0.35em] text-cream/40">Follow Us</p>
               <div className="mt-5 space-y-1.5 text-sm text-cream/75">
-                <p>sahani.parimal@gmail.com</p>
-                <p>+91 86906 70529</p>
+                <p>
+                  <a href="mailto:microcretestudio@gmail.com" className="transition-colors hover:text-gold">
+                    microcretestudio@gmail.com
+                  </a>
+                </p>
+                <p>
+                  <a href="tel:+918690670529" className="transition-colors hover:text-gold">
+                    +91 86906 70529
+                  </a>
+                </p>
               </div>
               <ul className="mt-6 flex gap-3 md:justify-center">
                 {socials.map((social) =>

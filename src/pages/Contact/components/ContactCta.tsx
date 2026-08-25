@@ -42,10 +42,12 @@ export function ContactCta() {
             </a>
           </div>
 
-          <p className="mt-8 inline-flex items-center gap-2 text-xs tracking-wide text-ink/50">
+          <a
+            href="mailto:microcretestudio@gmail.com"
+            className="mt-8 inline-flex items-center gap-2 text-xs tracking-wide text-ink/50 transition-colors hover:text-gold">
             <MailIcon className="h-3.5 w-3.5" strokeWidth={1.5} />
-            hello@microcretestudio.com
-          </p>
+            microcretestudio@gmail.com
+          </a>
         </div>
       </motion.div>
     </section>);

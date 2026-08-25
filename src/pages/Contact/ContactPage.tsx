@@ -150,7 +150,16 @@ export function ContactPage() {
 
                   <div className="grid gap-6 sm:grid-cols-2">
                     <Field label="Name" name="name" placeholder="Your name" />
-                    <Field label="Phone" name="phone" type="tel" placeholder="+91" />
+                    <Field
+                      label="Phone"
+                      name="phone"
+                      type="tel"
+                      prefix="+91"
+                      placeholder="98765 43210"
+                      maxLength={10}
+                      pattern="[0-9]{10}"
+                      title="Please enter a 10-digit mobile number"
+                    />
                   </div>
                   <Field label="Email" name="email" type="email" placeholder="you@email.com" />
 
@@ -250,19 +259,59 @@ type FieldProps = {
   name: string;
   type?: string;
   placeholder?: string;
+  prefix?: string;
+  maxLength?: number;
+  pattern?: string;
+  title?: string;
 };
 
-function Field({ label, name, type = 'text', placeholder }: FieldProps) {
+function Field({
+  label,
+  name,
+  type = 'text',
+  placeholder,
+  prefix,
+  maxLength,
+  pattern,
+  title,
+}: FieldProps) {
   return (
     <label className="block">
       <span className="text-[10px] uppercase tracking-[0.3em] text-stone">{label}</span>
-      <input
-        type={type}
-        name={name}
-        required
-        placeholder={placeholder}
-        className="mt-2 w-full border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold" />
-
-    </label>);
-
+      {prefix ? (
+        <div className="mt-2 flex items-center border-b border-ink/20 py-3 transition-colors focus-within:border-gold">
+          <span className="select-none pr-2 text-sm font-medium text-ink/80">{prefix}</span>
+          <input
+            type={type}
+            name={name}
+            required
+            maxLength={maxLength}
+            pattern={pattern}
+            title={title}
+            placeholder={placeholder}
+            onInput={
+              type === 'tel'
+                ? (e) => {
+                    const target = e.currentTarget;
+                    target.value = target.value.replace(/\D/g, '').slice(0, 10);
+                  }
+                : undefined
+            }
+            className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-ink/35"
+          />
+        </div>
+      ) : (
+        <input
+          type={type}
+          name={name}
+          required
+          maxLength={maxLength}
+          pattern={pattern}
+          title={title}
+          placeholder={placeholder}
+          className="mt-2 w-full border-b border-ink/20 bg-transparent py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold"
+        />
+      )}
+    </label>
+  );
 }
