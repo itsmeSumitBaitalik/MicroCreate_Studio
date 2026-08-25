@@ -97,72 +97,66 @@ interface VideoCardProps {
 function VideoCard({ video, index, onOpenLightbox }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [srcLoaded, setSrcLoaded] = useState(false); // only inject src on first hover
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // On hover-enter: inject src (once) and play
+  // On hover-enter: play video
   const handleMouseEnter = () => {
     setIsHovered(true);
     const v = videoRef.current;
     if (!v) return;
-
-    // Lazy-inject the src the very first time
-    if (!srcLoaded) {
-      const source = document.createElement("source");
-      source.src = video.srcWebm;
-      source.type = "video/webm";
-      v.appendChild(source);
-      v.load();
-      setSrcLoaded(true);
-    }
-
     v.muted = true;
-    v.play().catch(() => {});
+    const playPromise = v.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
   };
 
-  // On hover-leave: pause and reset to start so poster shows again
+  // On hover-leave: pause and reset to start
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setIsPlaying(false);
     const v = videoRef.current;
     if (!v) return;
     v.pause();
     v.currentTime = 0;
   };
 
-  // Click: open lightbox (video on card pauses automatically via mouse-leave)
+  // Click: open lightbox
   const handleClick = () => {
     onOpenLightbox();
   };
 
   return (
     <div
-      className="video-card group relative shrink-0 cursor-pointer overflow-hidden rounded-[1.25rem] border border-ink/10 transition-all duration-500 hover:border-gold/40 hover:shadow-[0_25px_60px_-20px_rgba(0,0,0,0.35)] sm:rounded-[1.75rem]"
+      className="video-card group relative shrink-0 cursor-pointer overflow-hidden rounded-[1.25rem] border border-transparent transition-all duration-300 hover:border-gold/40 sm:rounded-[1.75rem]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <div className="relative aspect-[9/16] w-full overflow-hidden">
+      <div className="relative aspect-[9/16] w-full overflow-hidden bg-charcoal">
+        {/* Video element */}
+        <video
+          ref={videoRef}
+          src={video.srcWebm}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onPlaying={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
 
-        {/* Poster — always visible, fades out once video is playing */}
+        {/* Poster — stays visible until video starts playing, preventing any white flash */}
         {video.poster && (
           <img
             src={video.poster}
             alt={video.label}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-              isHovered ? "opacity-0" : "opacity-100"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+              isHovered && isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           />
         )}
-
-        {/* Video — src only injected on first hover, so idle cards cost 0 bandwidth */}
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-charcoal/10" />
 
         {/* Play icon — visible when not hovered, hides when video plays */}
         <div
@@ -170,17 +164,17 @@ function VideoCard({ video, index, onOpenLightbox }: VideoCardProps) {
             isHovered ? "opacity-0" : "opacity-100"
           }`}
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/20 backdrop-blur-sm transition-transform duration-200 group-hover:scale-110 sm:h-12 sm:w-12">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-cream transition-transform duration-200 group-hover:scale-110 sm:h-12 sm:w-12">
             <PlayIcon className="h-4 w-4 text-cream sm:h-5 sm:w-5" fill="currentColor" />
           </div>
         </div>
 
         {/* Label */}
         <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 md:p-5">
-          <p className="text-[9px] uppercase tracking-[0.25em] text-gold sm:text-[10px]">
+          <p className="text-[9px] uppercase tracking-[0.25em] text-gold sm:text-[10px] [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]">
             Project {String(index + 1).padStart(2, "0")}
           </p>
-          <p className="mt-0.5 font-display text-base leading-tight text-cream sm:mt-1 sm:text-lg md:text-xl">
+          <p className="mt-0.5 font-display text-base leading-tight text-cream sm:mt-1 sm:text-lg md:text-xl [text-shadow:_0_1px_6px_rgba(0,0,0,0.8)]">
             {video.label}
           </p>
         </div>
@@ -219,9 +213,6 @@ export function WorkShowcase() {
 
       {/* Marquee track */}
       <div className="video-marquee group/marquee relative mt-14 w-full overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-cream to-transparent sm:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-cream to-transparent sm:w-28" />
-
         <div className="video-marquee-track flex w-max gap-3 sm:gap-4 md:gap-5">
           {videos.map((video, i) => (
             <VideoCard
