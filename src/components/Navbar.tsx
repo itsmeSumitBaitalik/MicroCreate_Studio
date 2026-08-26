@@ -48,7 +48,7 @@ export function Navbar() {
           <img
             src={LOGO_SRC}
             alt="Microcrete Studio"
-             className="h-14 w-auto max-w-none origin-left scale-[1.35] object-contain sm:scale-[1.30]"
+             className="h-14 w-auto max-w-none origin-left md:scale-[1.45] object-contain sm:scale-[1.10]"
           />
         </Link>
 
