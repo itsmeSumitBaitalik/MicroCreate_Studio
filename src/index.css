@@ -133,6 +133,13 @@ body {
 .video-marquee:hover .video-marquee-track {
   animation-play-state: paused;
 }
+/* While the user is actively dragging */
+.video-marquee.is-dragging {
+  cursor: grabbing;
+}
+.video-marquee.is-dragging .video-card {
+  pointer-events: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .video-marquee-track {
     animation: none;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, XIcon, ArrowUpRightIcon } from "lucide-react";
@@ -8,6 +8,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navRef = useRef<HTMLElement>(null);
 
   // Handle navbar background when scrolling
   useEffect(() => {
@@ -29,8 +30,27 @@ export function Navbar() {
     setOpen(false);
   }, [location.pathname, location.key]);
 
+  // Close mobile menu when clicking/tapping outside the navbar
+  useEffect(() => {
+    if (!open) return;
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [open]);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6">
+    <header ref={navRef} className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6">
       <nav
         aria-label="Primary"
         className={`mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-ink/10 py-2 pl-3 pr-2 transition-all duration-500 sm:pl-5 ${
@@ -48,7 +68,7 @@ export function Navbar() {
           <img
             src={LOGO_SRC}
             alt="Microcrete Studio"
-             className="h-14 w-auto max-w-none origin-left md:scale-[1.45] object-contain sm:scale-[1.10]"
+             className="h-14 max-w-none origin-left scale-[1.35] sm:scale-[1.45] lg:scale-[1.45] object-contain"
           />
         </Link>
 

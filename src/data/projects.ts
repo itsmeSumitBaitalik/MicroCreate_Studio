@@ -32,7 +32,7 @@ export const projects: Project[] = [
     id: "quarry-lobby",
     title: "Quarry Lobby",
     location: "Hyderabad",
-    finish: "Mandana texture",
+    finish: "Fossil texture",
     image: "/8fc15c66-c034-4708-9192-a1028236fcd3.webp",
   },
   {

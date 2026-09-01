@@ -188,6 +188,106 @@ function VideoCard({ video, index, onOpenLightbox }: VideoCardProps) {
 export function WorkShowcase() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  // Drag-to-scroll state
+  const trackRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
+  const startX = useRef(0);
+  const dragOffset = useRef(0);   // accumulated drag px
+  const animOffset = useRef(0);   // animation X captured at drag start
+  const didDrag = useRef(false);  // true once pointer moved > threshold
+
+  /* ---------- animation helpers ---------- */
+
+  const getAnimX = () => {
+    const el = trackRef.current;
+    if (!el) return 0;
+    return new DOMMatrix(window.getComputedStyle(el).transform).m41;
+  };
+
+  const pauseAnim = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const x = getAnimX();
+    animOffset.current = x;
+    dragOffset.current = 0;
+    el.style.animation = "none";
+    el.style.transform = `translateX(${x}px)`;
+  };
+
+  const resumeAnim = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const finalX = animOffset.current + dragOffset.current;
+    const halfW = el.scrollWidth / 2;
+    let norm = finalX % halfW;
+    if (norm > 0) norm -= halfW;
+    const dur = parseFloat(el.dataset.duration ?? "25");
+    const delay = (norm / halfW) * dur;
+    el.style.transform = "";
+    el.style.animation = "";
+    el.style.animationDelay = `${delay}s`;
+    el.style.animationPlayState = "running";
+  };
+
+  /* ---------- drag handlers (window-level, no setPointerCapture) ---------- */
+
+  const onDragStart = (clientX: number) => {
+    dragging.current = true;
+    didDrag.current = false;
+    startX.current = clientX;
+    pauseAnim();
+  };
+
+  const onDragMove = (clientX: number) => {
+    if (!dragging.current) return;
+    const delta = clientX - startX.current;
+    if (Math.abs(delta) > 5) {
+      didDrag.current = true;
+      wrapRef.current?.classList.add("is-dragging");
+    }
+    dragOffset.current = delta;
+    const el = trackRef.current;
+    if (el) el.style.transform = `translateX(${animOffset.current + delta}px)`;
+  };
+
+  const onDragEnd = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    wrapRef.current?.classList.remove("is-dragging");
+    resumeAnim();
+  };
+
+  // Mouse handlers on the wrapper
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return;
+    onDragStart(e.clientX);
+
+    const onMove = (ev: MouseEvent) => onDragMove(ev.clientX);
+    const onUp = () => {
+      onDragEnd();
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+  };
+
+  // Touch handlers on the wrapper
+  const handleTouchStart = (e: React.TouchEvent) => {
+    onDragStart(e.touches[0].clientX);
+
+    const onMove = (ev: TouchEvent) => onDragMove(ev.touches[0].clientX);
+    const onEnd = () => {
+      onDragEnd();
+      window.removeEventListener("touchmove", onMove);
+      window.removeEventListener("touchend", onEnd);
+    };
+    window.addEventListener("touchmove", onMove, { passive: true });
+    window.addEventListener("touchend", onEnd);
+  };
+
+
   return (
     <section className="w-full overflow-hidden bg-cream py-20 sm:py-28">
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
@@ -211,15 +311,24 @@ export function WorkShowcase() {
         </motion.div>
       </div>
 
-      {/* Marquee track */}
-      <div className="video-marquee group/marquee relative mt-14 w-full overflow-hidden">
-        <div className="video-marquee-track flex w-max gap-3 sm:gap-4 md:gap-5">
+      {/* Marquee track — draggable */}
+      <div
+        ref={wrapRef}
+        className="video-marquee group/marquee relative mt-14 w-full overflow-hidden select-none cursor-grab"
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+      >
+        <div
+          ref={trackRef}
+          data-duration="25"
+          className="video-marquee-track flex w-max gap-3 sm:gap-4 md:gap-5"
+        >
           {videos.map((video, i) => (
             <VideoCard
               key={`a-${video.srcWebm}`}
               video={video}
               index={i}
-              onOpenLightbox={() => setOpenIndex(i)}
+              onOpenLightbox={() => { if (!didDrag.current) setOpenIndex(i); }}
             />
           ))}
           {/* Duplicate set for seamless loop */}
@@ -228,7 +337,7 @@ export function WorkShowcase() {
               key={`b-${video.srcWebm}`}
               video={video}
               index={i}
-              onOpenLightbox={() => setOpenIndex(i)}
+              onOpenLightbox={() => { if (!didDrag.current) setOpenIndex(i); }}
             />
           ))}
         </div>
